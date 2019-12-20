@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id "com.diffplug.gradle.spotless" version "3.26.1"
+}
+
+group = 'com.shephertz'
+version = '2.3'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.json', name: 'json', version: '20190722'
+}
+
+spotless {
+    lineEndings 'UNIX'
+    java {
+        eclipse()
+        removeUnusedImports()
+        indentWithTabs()
+    }
+}
