@@ -89,7 +89,7 @@ public class Util {
 		return randomGenerator.nextInt(100) + 12345;
 	}
 
-	public static JSONObject getJsonObjectFromHashtable(HashMap<String, Object> properties) {
+	public static JSONObject getJsonObjectFromHashtable(Map<String, Object> properties) {
 		JSONObject jsonObject = new JSONObject();
 
 		try {
@@ -104,8 +104,8 @@ public class Util {
 		return jsonObject;
 	}
 
-	public static HashMap<String, Object> getHashMapFromProperties(String input) {
-		HashMap<String, Object> properties = new HashMap<>();
+	public static Map<String, Object> getHashMapFromProperties(String input) {
+		Map<String, Object> properties = new HashMap<>();
 
 		try {
 			JSONObject jSONObject = new JSONObject(input);

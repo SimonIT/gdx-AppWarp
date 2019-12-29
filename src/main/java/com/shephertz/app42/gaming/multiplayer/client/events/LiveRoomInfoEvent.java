@@ -7,12 +7,13 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class LiveRoomInfoEvent extends RoomEvent {
 	private String[] joinedUsers;
 	private String customData;
-	private HashMap<String, Object> properties;
-	private HashMap<String, String> lockProperties;
+	private Map<String, Object> properties;
+	private Map<String, String> lockProperties;
 
 	public LiveRoomInfoEvent(RoomData data, byte result, String[] users, String customData) {
 		super(data, result);
@@ -108,11 +109,11 @@ public class LiveRoomInfoEvent extends RoomEvent {
 		return this.customData;
 	}
 
-	public HashMap<String, Object> getProperties() {
+	public Map<String, Object> getProperties() {
 		return this.properties;
 	}
 
-	public HashMap<String, String> getLockProperties() {
+	public Map<String, String> getLockProperties() {
 		return this.lockProperties;
 	}
 }

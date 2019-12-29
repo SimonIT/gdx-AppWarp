@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 public class ChatEvent {
@@ -33,8 +34,8 @@ public class ChatEvent {
 		return chatEvent;
 	}
 
-	public static ArrayList<ChatEvent> buildChatHistoryList(ArrayList<Storage.JSONDocument> jsonDocList) {
-		ArrayList<ChatEvent> chatEvents = new ArrayList<>();
+	public static List<ChatEvent> buildChatHistoryList(List<Storage.JSONDocument> jsonDocList) {
+		List<ChatEvent> chatEvents = new ArrayList<>();
 
 		try {
 			for (Storage.JSONDocument jsonDocument : jsonDocList) {

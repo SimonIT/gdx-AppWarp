@@ -5,10 +5,11 @@ import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Set;
 
 public class App42Service {
-	protected HashMap<String, String> otherMetaHeaders = new HashMap<>();
+	protected Map<String, String> otherMetaHeaders = new HashMap<>();
 
 	protected Hashtable<String, String> populateSignParams(String apiKey) throws JSONException {
 		Hashtable<String, String> params = new Hashtable<>();
@@ -18,7 +19,7 @@ public class App42Service {
 		return params;
 	}
 
-	public void setOtherMetaHeaders(HashMap<String, String> otherMetaHeaders) {
+	public void setOtherMetaHeaders(Map<String, String> otherMetaHeaders) {
 		this.otherMetaHeaders = otherMetaHeaders;
 	}
 

@@ -3,13 +3,14 @@ package com.shephertz.app42.gaming.api.storage;
 import com.shephertz.app42.gaming.api.client.App42Response;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Storage extends App42Response {
 	public String dbName;
 	public String docId;
 	public String collectionName;
 	public Integer recordCount;
-	public ArrayList<JSONDocument> jsonDocList = new ArrayList<>();
+	public List<JSONDocument> jsonDocList = new ArrayList<>();
 
 	public String getDbName() {
 		return this.dbName;
@@ -35,11 +36,11 @@ public class Storage extends App42Response {
 		this.recordCount = recordCount;
 	}
 
-	public ArrayList<JSONDocument> getJsonDocList() {
+	public List<JSONDocument> getJsonDocList() {
 		return this.jsonDocList;
 	}
 
-	public void setJsonDocList(ArrayList<JSONDocument> jsonDocList) {
+	public void setJsonDocList(List<JSONDocument> jsonDocList) {
 		this.jsonDocList = jsonDocList;
 	}
 

@@ -7,7 +7,7 @@ import com.shephertz.app42.gaming.multiplayer.client.util.Util;
 
 public class MessageDispatchThread extends Thread {
 	boolean shouldStop = false;
-	WarpClient theClient = null;
+	WarpClient theClient;
 
 	MessageDispatchThread(WarpClient client) {
 		super("MessageDispatchThread");

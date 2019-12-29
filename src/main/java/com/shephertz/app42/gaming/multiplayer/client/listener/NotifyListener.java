@@ -2,7 +2,7 @@ package com.shephertz.app42.gaming.multiplayer.client.listener;
 
 import com.shephertz.app42.gaming.multiplayer.client.events.*;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface NotifyListener {
 	void onRoomCreated(RoomData var1);
@@ -25,8 +25,7 @@ public interface NotifyListener {
 
 	void onUpdatePeersReceived(UpdateEvent var1);
 
-	void onUserChangeRoomProperty(RoomData var1, String var2, HashMap<String, Object> var3,
-			HashMap<String, Object> var4);
+	void onUserChangeRoomProperty(RoomData var1, String var2, Map<String, Object> var3, Map<String, Object> var4);
 
 	void onMoveCompleted(MoveEvent var1);
 

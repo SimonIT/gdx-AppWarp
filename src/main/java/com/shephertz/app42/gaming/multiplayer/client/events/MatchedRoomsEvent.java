@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Iterator;
 
 public class MatchedRoomsEvent {
@@ -17,7 +18,7 @@ public class MatchedRoomsEvent {
 	}
 
 	public static MatchedRoomsEvent buildMatchedRoomsEvent(WarpResponseMessage msg) throws JSONException {
-		ArrayList<RoomData> roomsDataList = new ArrayList<>();
+		List<RoomData> roomsDataList = new ArrayList<>();
 		if (msg.getResultCode() == 0 || msg.getResultCode() == 7) {
 			JSONObject roomData = new JSONObject(new String(msg.getPayLoad()));
 			Iterator<String> it = roomData.keys();

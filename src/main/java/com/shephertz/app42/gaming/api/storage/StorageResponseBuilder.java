@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StorageResponseBuilder extends App42ResponseBuilder {
 	public static void main(String[] args) throws Exception {
@@ -16,7 +17,7 @@ public class StorageResponseBuilder extends App42ResponseBuilder {
 
 	public Storage buildResponse(String json) throws Exception {
 		Storage storageObj = new Storage();
-		ArrayList<Storage.JSONDocument> jsonDocList = new ArrayList<>();
+		List<Storage.JSONDocument> jsonDocList = new ArrayList<>();
 		storageObj.setJsonDocList(jsonDocList);
 		storageObj.setStrResponse(json);
 		JSONObject jsonObj = new JSONObject(json);
@@ -25,9 +26,7 @@ public class StorageResponseBuilder extends App42ResponseBuilder {
 		storageObj.setResponseSuccess(jsonObjResponse.getBoolean("success"));
 		JSONObject jsonObjStorage = jsonObjResponse.getJSONObject("storage");
 		this.buildObjectFromJSONTree(storageObj, jsonObjStorage);
-		if (!jsonObjStorage.has("jsonDoc")) {
-			return storageObj;
-		} else {
+		if (jsonObjStorage.has("jsonDoc")) {
 			if (jsonObjStorage.get("jsonDoc") instanceof JSONObject) {
 				JSONObject jsonObjDoc = jsonObjStorage.getJSONObject("jsonDoc");
 				Storage.JSONDocument document = storageObj.new JSONDocument();
@@ -42,8 +41,8 @@ public class StorageResponseBuilder extends App42ResponseBuilder {
 				}
 			}
 
-			return storageObj;
 		}
+		return storageObj;
 	}
 
 	private void buildJsonDocument(Storage.JSONDocument document, JSONObject jsonObjDoc) throws Exception {

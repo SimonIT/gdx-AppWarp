@@ -47,7 +47,7 @@ public class WarpClient {
 	private Timer connectionRecoveryTimer;
 	private Timer connectionTimer;
 	private boolean autoRecover = false;
-	private ArrayList<WarpMessage> messageQueue = new ArrayList<>();
+	private List<WarpMessage> messageQueue = new ArrayList<>();
 	private String dbName;
 	private boolean isChatHistory;
 	private StorageService storageService;
@@ -201,7 +201,7 @@ public class WarpClient {
 	}
 
 	public static byte adminCreateRoom(String name, String owner, int maxUsers, String apiKey, String secretKey,
-			String host, HashMap<String, Object> tableProperties) {
+			String host, Map<String, Object> tableProperties) {
 		byte result = -1;
 
 		try {
@@ -1234,9 +1234,8 @@ public class WarpClient {
 					return;
 				case 11 :
 					roomData = this.buildRoomData(notifyData);
-					HashMap<String, Object> properties = Util
-							.getHashMapFromProperties(notifyData.getString("properties"));
-					HashMap<String, Object> lockProperties = Util
+					Map<String, Object> properties = Util.getHashMapFromProperties(notifyData.getString("properties"));
+					Map<String, Object> lockProperties = Util
 							.getHashMapFromProperties(notifyData.getString("lockProperties"));
 					for (NotifyListener listener : this.notifyListeners) {
 						listener.onUserChangeRoomProperty(roomData, notifyData.getString("sender"), properties,
@@ -1732,7 +1731,7 @@ public class WarpClient {
 	* @param tableProperties
 	*            properties of room for matchmaking ( pass null if not required )
 	*/
-	public void createRoom(String name, String owner, int maxUsers, HashMap<String, Object> tableProperties) {
+	public void createRoom(String name, String owner, int maxUsers, Map<String, Object> tableProperties) {
 		JSONObject properties = new JSONObject();
 		if (tableProperties != null && tableProperties.size() > 0) {
 			properties = Util.getJsonObjectFromHashtable(tableProperties);
@@ -1799,8 +1798,7 @@ public class WarpClient {
 	*            the time ( in seconds ) allowed for a user to complete its turn
 	*            and send a move .
 	*/
-	public void createTurnRoom(String name, String owner, int maxUsers, HashMap<String, Object> tableProperties,
-			int time) {
+	public void createTurnRoom(String name, String owner, int maxUsers, Map<String, Object> tableProperties, int time) {
 		JSONObject properties = new JSONObject();
 		if (tableProperties != null && tableProperties.size() > 0) {
 			properties = Util.getJsonObjectFromHashtable(tableProperties);
@@ -2232,7 +2230,7 @@ public class WarpClient {
 	* @param removeArray
 	*            properties that will be removed for the room
 	*/
-	public void updateRoomProperties(String roomID, HashMap<String, Object> tableProperties, String[] removeArray) {
+	public void updateRoomProperties(String roomID, Map<String, Object> tableProperties, String[] removeArray) {
 		if (this.isNotConnected()) {
 			LiveRoomInfoEvent liveRoomInfoEvent = new LiveRoomInfoEvent(null, (byte) 5, null, null);
 			for (RoomRequestListener listener : this.roomRequestListeners) {
@@ -2274,7 +2272,7 @@ public class WarpClient {
 	* @param tableProperties
 	*            properties to be lock for the room
 	*/
-	public void lockProperties(HashMap<String, Object> tableProperties) {
+	public void lockProperties(Map<String, Object> tableProperties) {
 		if (this.isNotConnected()) {
 			for (RoomRequestListener listener : this.roomRequestListeners) {
 				listener.onLockPropertiesDone((byte) 5);
@@ -2335,7 +2333,7 @@ public class WarpClient {
 	* @param tableProperties
 	*            properties of the room to be joined
 	*/
-	public void joinRoomWithProperties(HashMap<String, Object> tableProperties) {
+	public void joinRoomWithProperties(Map<String, Object> tableProperties) {
 		byte errorCode = 0;
 		boolean var12 = false;
 
@@ -2463,7 +2461,7 @@ public class WarpClient {
 	* @param properties
 	*            properties of the room to be joined
 	*/
-	public void getRoomWithProperties(HashMap<String, Object> properties) {
+	public void getRoomWithProperties(Map<String, Object> properties) {
 		byte errorCode = 0;
 		boolean var12 = false;
 
@@ -2529,7 +2527,7 @@ public class WarpClient {
 	* @param properties
 	*            properties of the room to be joined
 	*/
-	public void getRoomInRangeWithProperties(int minUser, int maxUsers, HashMap<String, Object> properties) {
+	public void getRoomInRangeWithProperties(int minUser, int maxUsers, Map<String, Object> properties) {
 		byte errorCode = 0;
 		boolean var14 = false;
 
@@ -3023,8 +3021,7 @@ public class WarpClient {
 		this.clientChannel.SendRequest(roomMsg);
 	}
 
-	private void sendPropertyMatchMakingRequest(byte code, HashMap<String, Object> tableProperties)
-			throws JSONException {
+	private void sendPropertyMatchMakingRequest(byte code, Map<String, Object> tableProperties) throws JSONException {
 		JSONObject properties = null;
 		if (tableProperties != null && tableProperties.size() > 0) {
 			properties = Util.getJsonObjectFromHashtable(tableProperties);
@@ -3038,7 +3035,7 @@ public class WarpClient {
 	}
 
 	private void sendRangePropertiesMatchMakingRequest(byte code, int minUser, int maxUser, boolean maxPreferred,
-			HashMap<String, Object> tableProperties) throws JSONException {
+			Map<String, Object> tableProperties) throws JSONException {
 		JSONObject properties = null;
 		if (tableProperties != null && tableProperties.size() > 0) {
 			properties = Util.getJsonObjectFromHashtable(tableProperties);
@@ -3332,7 +3329,7 @@ public class WarpClient {
 			}
 
 		} else if (this.storageService != null && !this.isNullOrEmpty(roomId)) {
-			HashMap<String, String> otherMetaHeaders = new HashMap<>();
+			Map<String, String> otherMetaHeaders = new HashMap<>();
 			Query q1 = QueryBuilder.build("roomId", roomId, QueryBuilder.Operator.EQUALS);
 			otherMetaHeaders.put("orderByDescending", "chatTime");
 			this.storageService.setOtherMetaHeaders(otherMetaHeaders);
@@ -3357,7 +3354,7 @@ public class WarpClient {
 	void onApp42Response(int app42RequestCode, Object response) {
 		if (app42RequestCode == 1) {
 			Storage storage = (Storage) response;
-			ArrayList<ChatEvent> chats = ChatEvent.buildChatHistoryList(storage.getJsonDocList());
+			List<ChatEvent> chats = ChatEvent.buildChatHistoryList(storage.getJsonDocList());
 			for (ChatRequestListener listener : this.chatRequestListeners) {
 				listener.onGetChatHistoryDone((byte) 0, chats);
 			}

@@ -40,7 +40,7 @@ public class RestConnector {
 
 	private byte getResultStatus(String baseUrl, String apiKey, String geo) {
 		try {
-			String response = this.excuteGet(this.buildUrl(baseUrl, apiKey, geo));
+			String response = this.executeGet(this.buildUrl(baseUrl, apiKey, geo));
 			JSONObject jsonResult = new JSONObject(response);
 			if (jsonResult.get("address").toString().trim() != null
 					&& !jsonResult.get("address").toString().trim().equals("")) {
@@ -61,7 +61,7 @@ public class RestConnector {
 		return geo != null && geo.length() > 0 ? basUrl + "?api=" + apiKey + "&geo=" + geo : basUrl + "?api=" + apiKey;
 	}
 
-	private String excuteGet(String urlStr) throws Exception {
+	private String executeGet(String urlStr) throws Exception {
 		InputStream in = null;
 		HttpURLConnection connection = null;
 

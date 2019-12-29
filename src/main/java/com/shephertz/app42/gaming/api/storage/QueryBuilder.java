@@ -6,18 +6,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 public class QueryBuilder {
 	public static Query build(String key, Object value, QueryBuilder.Operator op) {
-		Query query = null;
+		Query query;
 
 		try {
 			if (value instanceof Date) {
 				Date date = (Date) value;
 				value = Util.getUTCFormattedTimestamp(date);
-			} else if (value instanceof ArrayList) {
+			} else if (value instanceof List) {
 				value = value.toString();
 			}
 
@@ -34,7 +34,7 @@ public class QueryBuilder {
 	}
 
 	public static Query setLoggedInUser(String logged) {
-		Query query = null;
+		Query query;
 
 		try {
 			JSONObject jsonObj = new JSONObject();
@@ -49,7 +49,7 @@ public class QueryBuilder {
 	}
 
 	public static Query setCreatedOn(String date, QueryBuilder.Operator op) {
-		Query query = null;
+		Query query;
 
 		try {
 			JSONObject jsonObj = new JSONObject();
@@ -64,7 +64,7 @@ public class QueryBuilder {
 	}
 
 	public static Query setUpdatedOn(String date, QueryBuilder.Operator op) {
-		Query query = null;
+		Query query;
 
 		try {
 			JSONObject jsonObj = new JSONObject();
@@ -79,7 +79,7 @@ public class QueryBuilder {
 	}
 
 	public static Query setDocumentId(String docid) {
-		Query query = null;
+		Query query;
 
 		try {
 			JSONObject jsonObj = new JSONObject();
@@ -105,11 +105,7 @@ public class QueryBuilder {
 			}
 
 			jsonArray.put(new JSONObject("{'compoundOpt':'" + op.getValue() + "'}"));
-			if (q2.getType() instanceof JSONObject) {
-				jsonArray.put(q2.getType());
-			} else {
-				jsonArray.put(q2.getType());
-			}
+			jsonArray.put(q2.getType());
 
 			return query;
 		} catch (JSONException var6) {
