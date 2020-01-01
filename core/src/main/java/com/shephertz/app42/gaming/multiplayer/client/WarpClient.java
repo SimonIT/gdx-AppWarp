@@ -214,8 +214,8 @@ public interface WarpClient {
 	 * ConnectionRequestListener.
 	 */
 	void disconnect() /*-{
-        this.disconnect();
-    }-*/;
+						this.disconnect();
+						}-*/;
 
 	/**
 	 * Returns the current connection state of the WarpClient instance.

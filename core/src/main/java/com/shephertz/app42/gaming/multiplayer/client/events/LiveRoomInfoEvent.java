@@ -14,8 +14,8 @@ public class LiveRoomInfoEvent extends RoomEvent {
 		this.customData = customData;
 	}
 
-	public LiveRoomInfoEvent(RoomData data, byte result, String[] users, String customData, Map<String, Object> properties,
-							 Map<String, String> lockProperties) {
+	public LiveRoomInfoEvent(RoomData data, byte result, String[] users, String customData,
+							 Map<String, Object> properties, Map<String, String> lockProperties) {
 		super(data, result);
 		this.joinedUsers = users;
 		this.customData = customData;

@@ -2,7 +2,6 @@ package com.shephertz.app42.gaming.api.storage;
 
 import com.shephertz.app42.gaming.api.client.*;
 import com.shephertz.app42.gaming.multiplayer.client.JavaWarpClient;
-import com.shephertz.app42.gaming.multiplayer.client.WarpClient;
 import com.shephertz.app42.gaming.multiplayer.client.util.Util;
 import org.json.JSONObject;
 
@@ -43,7 +42,7 @@ public class StorageService extends App42Service {
 	}
 
 	public void findAllDocuments(final String dbName, final String collectionName, final int max, final int offset,
-			final App42CallBack callBack) throws App42Exception {
+								 final App42CallBack callBack) throws App42Exception {
 		(new Thread(() -> {
 			try {
 				Storage storage = (Storage) StorageService.this.findAllDocuments(dbName, collectionName, max, offset);
@@ -89,7 +88,7 @@ public class StorageService extends App42Service {
 	}
 
 	public void insertJSONDocument(final String dbName, final String collectionName, final JSONObject json,
-			App42CallBack callBack) throws App42Exception {
+								   App42CallBack callBack) throws App42Exception {
 		(new Thread(() -> {
 			try {
 				StorageService.this.insertJSONDocument(dbName, collectionName, json);
@@ -100,7 +99,7 @@ public class StorageService extends App42Service {
 	}
 
 	public Storage findDocumentsByQueryWithPaging(String dbName, String collectionName, Query query, int max,
-			int offset) throws App42Exception {
+												  int offset) throws App42Exception {
 		String response;
 		Storage storage;
 
@@ -133,7 +132,7 @@ public class StorageService extends App42Service {
 	}
 
 	public void findDocumentsByQueryWithPaging(final String dbName, final String collectionName, final Query query,
-			final int max, final int offset, final App42CallBack callBack) throws App42Exception {
+											   final int max, final int offset, final App42CallBack callBack) throws App42Exception {
 		(new Thread(() -> {
 			try {
 				Storage storage = StorageService.this.findDocumentsByQueryWithPaging(dbName, collectionName, query, max,

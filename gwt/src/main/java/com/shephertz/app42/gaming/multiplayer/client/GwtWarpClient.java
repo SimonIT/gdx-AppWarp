@@ -548,7 +548,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return int
 	 */
 	public final native int getConnectionState() /*-{
-        this.getConnectionState();
+        return this.getConnectionState();
     }-*/;
 
 	/**
@@ -601,7 +601,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param data   custom data that will be set for the room
 	 */
 	public final native void setCustomRoomData(String roomid, String data) /*-{
-        this.setCustomRoomData(roomId, data);
+        this.setCustomRoomData(roomid, data);
     }-*/;
 
 	/**
@@ -688,7 +688,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param roomid Id of the room
 	 */
 	public final native void getLiveRoomInfo(String roomid) /*-{
-        this.getLiveRoomInfo(roomId);
+        this.getLiveRoomInfo(roomid);
     }-*/;
 
 	/**

@@ -103,7 +103,8 @@ public class EventBuilder {
 			lockProperties = jsonRoom.getString("lockProperties");
 		}
 
-		return new LiveRoomInfoEvent(roomInfo, msg.getResultCode(), usernames, customData, buildProperties(properties), buildLockProperties(lockProperties));
+		return new LiveRoomInfoEvent(roomInfo, msg.getResultCode(), usernames, customData, buildProperties(properties),
+				buildLockProperties(lockProperties));
 	}
 
 	public static LiveUserInfoEvent buildLiveUserInfoEvent(WarpResponseMessage msg) throws JSONException {
@@ -172,7 +173,8 @@ public class EventBuilder {
 	}
 
 	public static MoveEvent buildMoveEvent(JSONObject notifyData) {
-		return new MoveEvent(notifyData.optString("sender"), notifyData.optString("moveData"), notifyData.optString("nextTurn"), notifyData.optString("id"));
+		return new MoveEvent(notifyData.optString("sender"), notifyData.optString("moveData"),
+				notifyData.optString("nextTurn"), notifyData.optString("id"));
 	}
 
 	public static MoveEvent[] buildMoveHistoryArray(WarpResponseMessage msg) {
