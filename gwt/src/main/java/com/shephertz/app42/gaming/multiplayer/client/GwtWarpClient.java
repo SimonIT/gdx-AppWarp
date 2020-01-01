@@ -28,7 +28,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return singleton instance of WarpClient.
 	 * @throws Exception WarpClient not initialized
 	 */
-	public native static WarpClient getInstance() throws Exception /*-{
+	public native static GwtWarpClient getInstance() throws Exception /*-{
         return AppWarp.WarpClient.getInstance();
     }-*/;
 
@@ -42,7 +42,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return WarpResponseResultCode
 	 */
 	public native static byte initialize(String apiKey, String pvtKey) /*-{
-        AppWarp.WarpClient.initialize(apiKey, secretKey);
+        return AppWarp.WarpClient.initialize(apiKey, secretKey);
     }-*/;
 
 	/**
@@ -56,7 +56,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return WarpResponseResultCode
 	 */
 	public native static byte initialize(String apiKey, String pvtKey, String server) /*-{
-        AppWarp.WarpClient.initialize(apiKey, secretKey, server);
+        return AppWarp.WarpClient.initialize(apiKey, secretKey, server);
     }-*/;
 
 	/**
