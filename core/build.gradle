@@ -1,0 +1,8 @@
+plugins {
+    id 'java'
+}
+
+group 'com.shephertz'
+version '2.3'
+
+sourceCompatibility = 1.8

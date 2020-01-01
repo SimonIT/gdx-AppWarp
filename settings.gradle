@@ -1,1 +1,5 @@
 rootProject.name = 'App42MultiPlayerGamingSDK'
+include 'core'
+include 'gwt'
+include 'java'
+

@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.8.3
-Created-By: 1.6.0_16-b01 (Sun Microsystems Inc.)
-Class-Path: lib/json-org.jar
-X-COMMENT: Main-Class will be added automatically by build
-Main-Class: com.shephertz.app42.gaming.multiplayer.client.test.PushTest
-

@@ -4,16 +4,7 @@ plugins {
 }
 
 group = 'com.shephertz'
-version = '2.3'
 sourceCompatibility = '1.8'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile group: 'org.json', name: 'json', version: '20190722'
-}
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     archiveClassifier.set("sources")
