@@ -55,8 +55,9 @@ public class JsUtil {
 
 	public static native Map<?, ?> toJavaMap(JavaScriptObject map) /*-{
         var jmap = @java.util.HashMap::new()();
-        for (var entry of Object.entries(map)) {
-            jmap.@java.util.HashMap::put(*)(entry[0], entry[1]);
+        var entries = Object.entries(map);
+        for (var i = 0; i < entries.length; i++) {
+            jmap.@java.util.HashMap::put(*)(entries[i][0], entries[i][1]);
         }
         return jmap;
     }-*/;
