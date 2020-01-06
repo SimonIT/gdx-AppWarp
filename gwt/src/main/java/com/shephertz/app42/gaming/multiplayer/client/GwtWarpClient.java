@@ -18,7 +18,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 *                        intermittent connection loss
 	 */
 	public native static void setRecoveryAllowance(int maxRecoveryTime) /*-{
-        AppWarp.WarpClient.recoveryAllowance = maxRecoveryTime;
+        $wnd.AppWarp.WarpClient.recoveryAllowance = maxRecoveryTime;
     }-*/;
 
 	/**
@@ -29,7 +29,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @throws Exception WarpClient not initialized
 	 */
 	public native static GwtWarpClient getInstance() throws Exception /*-{
-        return AppWarp.WarpClient.getInstance();
+        return $wnd.AppWarp.WarpClient.getInstance();
     }-*/;
 
 	/**
@@ -42,7 +42,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return WarpResponseResultCode
 	 */
 	public native static byte initialize(String apiKey, String pvtKey) /*-{
-        return AppWarp.WarpClient.initialize(apiKey, secretKey);
+        return $wnd.AppWarp.WarpClient.initialize(apiKey, secretKey);
     }-*/;
 
 	/**
@@ -56,7 +56,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return WarpResponseResultCode
 	 */
 	public native static byte initialize(String apiKey, String pvtKey, String server) /*-{
-        return AppWarp.WarpClient.initialize(apiKey, secretKey, server);
+        return $wnd.AppWarp.WarpClient.initialize(apiKey, secretKey, server);
     }-*/;
 
 	/**
