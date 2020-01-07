@@ -111,10 +111,10 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener method for listening to the request
 	 */
 	public final native void addConnectionRequestListener(ConnectionRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onConnectDone, function (res, reasonCode) {
+        this.setResponseListener($wnd.AppWarp.Events.onConnectDone, function (res, reasonCode) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onConnectDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/ConnectEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ConnectEvent::new(BI)(res.getResultCode(), reasonCode));
         });
-        this.setResponseListener(AppWarp.Events.onDisconnectDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onDisconnectDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onDisconnectDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/ConnectEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ConnectEvent::new(B)(res.getResultCode()));
         });
         this.setResponseListener("onInitUDPDone", function (res) {
@@ -131,8 +131,8 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeConnectionRequestListener(ConnectionRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onConnectDone, undefined);
-        this.setResponseListener(AppWarp.Events.onDisconnectDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onConnectDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onDisconnectDone, undefined);
         this.setResponseListener("onInitUDPDone", undefined);
     }-*/;
 
@@ -145,25 +145,25 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener method for listening to the request
 	 */
 	public final native void addZoneRequestListener(ZoneRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onDeleteRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onDeleteRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onDeleteRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onGetAllRoomsDone, function (rooms) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetAllRoomsDone, function (rooms) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetAllRoomsDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/AllRoomsEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.AllRoomsEvent::new(B[Ljava/lang/String;)(rooms.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(*)(rooms.getRoomIds())));
         });
-        this.setResponseListener(AppWarp.Events.onCreateRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onCreateRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onCreateRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onGetOnlineUsersDone, function (users) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetOnlineUsersDone, function (users) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetOnlineUsersDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/AllUsersEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.AllUsersEvent::new(B[Ljava/lang/String;)(users.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(*)(users.getUsernames())));
         });
-        this.setResponseListener(AppWarp.Events.onGetLiveUserInfoDone, function (user) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetLiveUserInfoDone, function (user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetLiveUserInfoDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveUserInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveUserInfoEvent::new(BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZ)(user.getResult(), user.getLocationId(), user.getName(), user.getCustomData(), user.isLobby(), user.isPaused()));
         });
-        this.setResponseListener(AppWarp.Events.onSetCustomUserDataDone, function (user) {
+        this.setResponseListener($wnd.AppWarp.Events.onSetCustomUserDataDone, function (user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onSetCustomUserDataDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveUserInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveUserInfoEvent::new(BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZ)(user.getResult(), user.getLocationId(), user.getName(), user.getCustomData(), user.isLobby(), user.isPaused()));
         });
-        this.setResponseListener(AppWarp.Events.onGetMatchedRoomsDone, function (event) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetMatchedRoomsDone, function (event) {
             var roomDatas = [];
             var rooms = event.getRooms();
             for (var i = 0; i < rooms.length; i++) {
@@ -171,13 +171,13 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
             }
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetMatchedRoomsDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/MatchedRoomsEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.MatchedRoomsEvent::new(B[Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;)(event.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaArray(*)(roomDatas)));
         });
-        this.setResponseListener(AppWarp.Events.onGetAllRoomsCountDone, function (result, count) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetAllRoomsCountDone, function (result, count) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetAllRoomsCountDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/AllRoomsEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.AllRoomsEvent::new(BI)(result, count));
         });
-        this.setResponseListener(AppWarp.Events.onGetOnlineUsersCountDone, function (result, count) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetOnlineUsersCountDone, function (result, count) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetOnlineUsersCountDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/AllUsersEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.AllUsersEvent::new(IB)(count, result));
         });
-        this.setResponseListener(AppWarp.Events.onUserStatusDone, function (user) {
+        this.setResponseListener($wnd.AppWarp.Events.onUserStatusDone, function (user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener::onGetLiveUserInfoDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveUserInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveUserInfoEvent::new(BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZ)(user.getResult(), user.getLocationId(), user.getName(), user.getCustomData(), user.isLobby(), user.isPaused()));
         });
     }-*/;
@@ -191,16 +191,16 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeZoneRequestListener(ZoneRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onDeleteRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetAllRoomsDone, undefined);
-        this.setResponseListener(AppWarp.Events.onCreateRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetOnlineUsersDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetLiveUserInfoDone, undefined);
-        this.setResponseListener(AppWarp.Events.onSetCustomUserDataDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetMatchedRoomsDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetAllRoomsCountDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetOnlineUsersCountDone, undefined);
-        this.setResponseListener(AppWarp.Events.onUserStatusDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onDeleteRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetAllRoomsDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onCreateRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetOnlineUsersDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetLiveUserInfoDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSetCustomUserDataDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetMatchedRoomsDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetAllRoomsCountDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetOnlineUsersCountDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onUserStatusDone, undefined);
     }-*/;
 
 	/**
@@ -212,19 +212,19 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener method for listening to the request
 	 */
 	public final native void addLobbyRequestListener(LobbyRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onJoinLobbyDone, function (lobby) {
+        this.setResponseListener($wnd.AppWarp.Events.onJoinLobbyDone, function (lobby) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.LobbyRequestListener::onJoinLobbyDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)(lobby.getLobbyId(), lobby.getOwner(), lobby.getName(), lobby.getMaxUsers(), lobby.getIsPrimary()), lobby.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onLeaveLobbyDone, function (lobby) {
+        this.setResponseListener($wnd.AppWarp.Events.onLeaveLobbyDone, function (lobby) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.LobbyRequestListener::onLeaveLobbyDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)(lobby.getLobbyId(), lobby.getOwner(), lobby.getName(), lobby.getMaxUsers(), lobby.getIsPrimary()), lobby.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onSubscribeLobbyDone, function (lobby) {
+        this.setResponseListener($wnd.AppWarp.Events.onSubscribeLobbyDone, function (lobby) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.LobbyRequestListener::onSubscribeLobbyDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)(lobby.getLobbyId(), lobby.getOwner(), lobby.getName(), lobby.getMaxUsers(), lobby.getIsPrimary()), lobby.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onUnsubscribeLobbyDone, function (lobby) {
+        this.setResponseListener($wnd.AppWarp.Events.onUnsubscribeLobbyDone, function (lobby) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.LobbyRequestListener::onUnSubscribeLobbyDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.LobbyData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)(lobby.getLobbyId(), lobby.getOwner(), lobby.getName(), lobby.getMaxUsers(), lobby.getIsPrimary()), lobby.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onGetLiveLobbyInfoDone, function (liveRoom) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetLiveLobbyInfoDone, function (liveRoom) {
             var room = liveRoom.getRoom();
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.LobbyRequestListener::onGetLiveLobbyInfoDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveRoomInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B[Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), liveRoom.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(*)(liveRoom.getUsers()), liveRoom.getCustomData(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaMap(*)(liveRoom.getProperties()), null));
         });
@@ -238,11 +238,11 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeLobbyRequestListener(LobbyRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onJoinLobbyDone, undefined);
-        this.setResponseListener(AppWarp.Events.onLeaveLobbyDone, undefined);
-        this.setResponseListener(AppWarp.Events.onSubscribeLobbyDone, undefined);
-        this.setResponseListener(AppWarp.Events.onUnsubscribeLobbyDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetLiveLobbyInfoDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onJoinLobbyDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onLeaveLobbyDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSubscribeLobbyDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onUnsubscribeLobbyDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetLiveLobbyInfoDone, undefined);
     }-*/;
 
 	/**
@@ -254,40 +254,40 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener method for listening to the request
 	 */
 	public final native void addRoomRequestListener(RoomRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSubscribeRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onSubscribeRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onSubscribeRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onUnsubscribeRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onUnsubscribeRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onUnSubscribeRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onJoinRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onJoinRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onJoinRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onLeaveRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onLeaveRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onLeaveRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onGetLiveRoomInfoDone, function (liveRoom) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetLiveRoomInfoDone, function (liveRoom) {
             var room = liveRoom.getRoom();
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onGetLiveRoomInfoDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveRoomInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B[Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), liveRoom.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(*)(liveRoom.getUsers()), liveRoom.getCustomData(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaMap(*)(liveRoom.getProperties()), null));
         });
-        this.setResponseListener(AppWarp.Events.onSetCustomRoomDataDone, function (liveRoom) {
+        this.setResponseListener($wnd.AppWarp.Events.onSetCustomRoomDataDone, function (liveRoom) {
             var room = liveRoom.getRoom();
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onSetCustomRoomDataDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveRoomInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B[Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), liveRoom.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(*)(liveRoom.getUsers()), liveRoom.getCustomData(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaMap(*)(liveRoom.getProperties()), null));
         });
-        this.setResponseListener(AppWarp.Events.onUpdatePropertyDone, function (liveRoom) {
+        this.setResponseListener($wnd.AppWarp.Events.onUpdatePropertyDone, function (liveRoom) {
             var room = liveRoom.getRoom();
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onUpdatePropertyDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/LiveRoomInfoEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B[Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), liveRoom.getResult(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(*)(liveRoom.getUsers()), liveRoom.getCustomData(), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaMap(*)(liveRoom.getProperties()), null));
         });
-        this.setResponseListener(AppWarp.Events.onLockPropertiesDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onLockPropertiesDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onLockPropertiesDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onUnlockPropertiesDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onUnlockPropertiesDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onUnlockPropertiesDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onJoinAndSubscribeRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onJoinAndSubscribeRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onJoinAndSubscribeRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
-        this.setResponseListener(AppWarp.Events.onLeaveAndUnsubscribeRoomDone, function (room) {
+        this.setResponseListener($wnd.AppWarp.Events.onLeaveAndUnsubscribeRoomDone, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener::onLeaveAndUnsubscribeRoomDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent::new(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;B)(@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers()), room.getResult()));
         });
     }-*/;
@@ -301,23 +301,23 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void addTurnBasedRoomListener(TurnBasedRoomListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSendMoveDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onSendMoveDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.TurnBasedRoomListener::onSendMoveDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onStartGameDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onStartGameDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.TurnBasedRoomListener::onStartGameDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onStopGameDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onStopGameDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.TurnBasedRoomListener::onStopGameDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onStopGameDone, function (res, moves) {
+        this.setResponseListener($wnd.AppWarp.Events.onStopGameDone, function (res, moves) {
             var jmoves = [];
             for (var i = 0; i < moves.length; i++) {
                 jmoves[i] = @com.shephertz.app42.gaming.multiplayer.client.events.MoveEvent::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(moves[i].getSender(), moves[i].getMoveData(), moves[i].getNextTurn(), moves[i].getRoomId());
             }
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.TurnBasedRoomListener::onGetMoveHistoryDone(B[Lcom/shephertz/app42/gaming/multiplayer/client/events/MoveEvent;)(res, @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaArray(*)(jmoves));
         });
-        this.setResponseListener(AppWarp.Events.onSetNextTurnDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onSetNextTurnDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.TurnBasedRoomListener::onSetNextTurnDone(B)(res);
         });
     }-*/;
@@ -331,11 +331,11 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeTurnBasedRoomListener(TurnBasedRoomListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSendMoveDone, undefined);
-        this.setResponseListener(AppWarp.Events.onStartGameDone, undefined);
-        this.setResponseListener(AppWarp.Events.onStopGameDone, undefined);
-        this.setResponseListener(AppWarp.Events.onStopGameDone, undefined);
-        this.setResponseListener(AppWarp.Events.onSetNextTurnDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSendMoveDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onStartGameDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onStopGameDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onStopGameDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSetNextTurnDone, undefined);
     }-*/;
 
 	/**
@@ -347,17 +347,17 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeRoomRequestListener(RoomRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSubscribeRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onUnsubscribeRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onJoinRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onLeaveRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetLiveRoomInfoDone, undefined);
-        this.setResponseListener(AppWarp.Events.onSetCustomRoomDataDone, undefined);
-        this.setResponseListener(AppWarp.Events.onUpdatePropertyDone, undefined);
-        this.setResponseListener(AppWarp.Events.onLockPropertiesDone, undefined);
-        this.setResponseListener(AppWarp.Events.onUnlockPropertiesDone, undefined);
-        this.setResponseListener(AppWarp.Events.onJoinAndSubscribeRoomDone, undefined);
-        this.setResponseListener(AppWarp.Events.onLeaveAndUnsubscribeRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSubscribeRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onUnsubscribeRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onJoinRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onLeaveRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetLiveRoomInfoDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSetCustomRoomDataDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onUpdatePropertyDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onLockPropertiesDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onUnlockPropertiesDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onJoinAndSubscribeRoomDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onLeaveAndUnsubscribeRoomDone, undefined);
     }-*/;
 
 	/**
@@ -369,13 +369,13 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void addChatRequestListener(ChatRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSendChatDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onSendChatDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ChatRequestListener::onSendChatDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onSendPrivateChatDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onSendPrivateChatDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ChatRequestListener::onSendPrivateChatDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onGetChatHistoryDone, function (res, chat) {
+        this.setResponseListener($wnd.AppWarp.Events.onGetChatHistoryDone, function (res, chat) {
             var jchat = [];
             for (var i = 0; i < chat.length; i++) {
                 jchat[i] = @com.shephertz.app42.gaming.multiplayer.client.events.ChatEvent::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)(chat[i].getChat(), chat[i].getSender(), chat[i].getLocId(), chat[i].getIsLocationLobby());
@@ -393,9 +393,9 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeChatRequestListener(ChatRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSendChatDone, undefined);
-        this.setResponseListener(AppWarp.Events.onSendPrivateChatDone, undefined);
-        this.setResponseListener(AppWarp.Events.onGetChatHistoryDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSendChatDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSendPrivateChatDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onGetChatHistoryDone, undefined);
     }-*/;
 
 	/**
@@ -407,10 +407,10 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener method for listening to the request
 	 */
 	public final native void addUpdateRequestListener(UpdateRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSendUpdateDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onSendUpdateDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.UpdateRequestListener::onSendUpdateDone(B)(res);
         });
-        this.setResponseListener(AppWarp.Events.onSendPrivateUpdateDone, function (res) {
+        this.setResponseListener($wnd.AppWarp.Events.onSendPrivateUpdateDone, function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.UpdateRequestListener::onSendPrivateUpdateDone(B)(res);
         });
     }-*/;
@@ -424,8 +424,8 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeUpdateRequestListener(UpdateRequestListener listener) /*-{
-        this.setResponseListener(AppWarp.Events.onSendUpdateDone, undefined);
-        this.setResponseListener(AppWarp.Events.onSendPrivateUpdateDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSendUpdateDone, undefined);
+        this.setResponseListener($wnd.AppWarp.Events.onSendPrivateUpdateDone, undefined);
     }-*/;
 
 	/**
@@ -437,55 +437,55 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener method for listening to the request
 	 */
 	public final native void addNotificationListener(NotifyListener listener) /*-{
-        this.setNotifyListener(AppWarp.Events.onRoomCreated, function (room) {
+        this.setNotifyListener($wnd.AppWarp.Events.onRoomCreated, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onRoomCreated(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;)((@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers())));
         });
-        this.setNotifyListener(AppWarp.Events.onRoomDestroyed, function (room) {
+        this.setNotifyListener($wnd.AppWarp.Events.onRoomDestroyed, function (room) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onRoomDestroyed(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;)((@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers())));
         });
-        this.setNotifyListener(AppWarp.Events.onUserLeftRoom, function (room, user) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserLeftRoom, function (room, user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserLeftRoom(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;Ljava/lang/String;)((@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers())), user);
         });
-        this.setNotifyListener(AppWarp.Events.onUserJoinedRoom, function (room, user) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserJoinedRoom, function (room, user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserJoinedRoom(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;Ljava/lang/String;)((@com.shephertz.app42.gaming.multiplayer.client.events.RoomData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)(room.getRoomId(), room.getOwner(), room.getName(), room.getMaxUsers())), user);
         });
-        this.setNotifyListener(AppWarp.Events.onUserLeftLobby, function (lobby, user) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserLeftLobby, function (lobby, user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserLeftLobby(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyData;Ljava/lang/String;)((@com.shephertz.app42.gaming.multiplayer.client.events.LobbyData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)(lobby.getRoomId(), lobby.getOwner(), lobby.getName(), lobby.getMaxUsers(), lobby.getIsPrimary())), user);
         });
-        this.setNotifyListener(AppWarp.Events.onUserJoinedLobby, function (lobby, user) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserJoinedLobby, function (lobby, user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserJoinedLobby(Lcom/shephertz/app42/gaming/multiplayer/client/events/LobbyData;Ljava/lang/String;)((@com.shephertz.app42.gaming.multiplayer.client.events.LobbyData::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)(lobby.getRoomId(), lobby.getOwner(), lobby.getName(), lobby.getMaxUsers(), lobby.getIsPrimary())), user);
         });
-        this.setNotifyListener(AppWarp.Events.onChatReceived, function (chat) {
+        this.setNotifyListener($wnd.AppWarp.Events.onChatReceived, function (chat) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onChatReceived(Lcom/shephertz/app42/gaming/multiplayer/client/events/ChatEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ChatEvent::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)(chat.getChat(), chat.getSender(), chat.getLocId(), chat.getIsLocationLobby()));
         });
-        this.setNotifyListener(AppWarp.Events.onPrivateChatReceived, function (sender, chat) {
+        this.setNotifyListener($wnd.AppWarp.Events.onPrivateChatReceived, function (sender, chat) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onPrivateChatReceived(Ljava/lang/String;Ljava/lang/String;)(sender, chat);
         });
-        this.setNotifyListener(AppWarp.Events.onPrivateUpdateReceived, function (userName, msg) {
+        this.setNotifyListener($wnd.AppWarp.Events.onPrivateUpdateReceived, function (userName, msg) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onPrivateUpdateReceived(Ljava/lang/String;[BZ)(userName, msg, true); // I don't know whether true is a good idea
         });
-        this.setNotifyListener(AppWarp.Events.onUpdatePeersReceived, function (payload) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUpdatePeersReceived, function (payload) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUpdatePeersReceived(Lcom/shephertz/app42/gaming/multiplayer/client/events/UpdateEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.UpdateEvent::new([BZ)(@com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaByteArray(Lcom/google/gwt/typedarrays/client/Uint8ArrayNative;)(payload), true)); // I don't know whether true is a good idea
         });
-        this.setNotifyListener(AppWarp.Events.onUserChangeRoomProperty, function (sender, properties, lockProperties) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserChangeRoomProperty, function (sender, properties, lockProperties) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserChangeRoomProperty(Lcom/shephertz/app42/gaming/multiplayer/client/events/RoomData;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)(null, sender, @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaMap(*)(properties), @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJavaMap(*)(lockProperties));  // It seems that no room data is provided
         });
-        this.setNotifyListener(AppWarp.Events.onMoveCompleted, function (move) {
+        this.setNotifyListener($wnd.AppWarp.Events.onMoveCompleted, function (move) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onMoveCompleted(Lcom/shephertz/app42/gaming/multiplayer/client/events/MoveEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.MoveEvent::new(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(move.getSender(), move.getMoveData(), move.getNextTurn(), move.getRoomId()));
         });
-        this.setNotifyListener(AppWarp.Events.onGameStarted, function (sender, id, nextTurn) {
+        this.setNotifyListener($wnd.AppWarp.Events.onGameStarted, function (sender, id, nextTurn) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onGameStarted(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(sender, id, nextTurn);
         });
-        this.setNotifyListener(AppWarp.Events.onGameStopped, function (sender, id) {
+        this.setNotifyListener($wnd.AppWarp.Events.onGameStopped, function (sender, id) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onGameStopped(Ljava/lang/String;Ljava/lang/String;)(sender, id);
         });
-        this.setNotifyListener(AppWarp.Events.onUserPaused, function (id, isLobby, user) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserPaused, function (id, isLobby, user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserPaused(Ljava/lang/String;ZLjava/lang/String;)(id, isLobby, user);
         });
-        this.setNotifyListener(AppWarp.Events.onUserResumed, function (id, isLobby, user) {
+        this.setNotifyListener($wnd.AppWarp.Events.onUserResumed, function (id, isLobby, user) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onUserResumed(Ljava/lang/String;ZLjava/lang/String;)(id, isLobby, user);
         });
-        this.setNotifyListener(AppWarp.Events.onNextTurnRequested, function (lastTurn) {
+        this.setNotifyListener($wnd.AppWarp.Events.onNextTurnRequested, function (lastTurn) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener::onNextTurnRequest(Ljava/lang/String;)(lastTurn);
         });
     }-*/;
@@ -499,23 +499,23 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param listener listener object
 	 */
 	public final native void removeNotificationListener(NotifyListener listener) /*-{
-        this.setNotifyListener(AppWarp.Events.onRoomCreated, undefined);
-        this.setNotifyListener(AppWarp.Events.onRoomDestroyed, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserLeftRoom, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserJoinedRoom, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserLeftLobby, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserJoinedLobby, undefined);
-        this.setNotifyListener(AppWarp.Events.onChatReceived, undefined);
-        this.setNotifyListener(AppWarp.Events.onPrivateChatReceived, undefined);
-        this.setNotifyListener(AppWarp.Events.onPrivateUpdateReceived, undefined);
-        this.setNotifyListener(AppWarp.Events.onUpdatePeersReceived, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserChangeRoomProperty, undefined);
-        this.setNotifyListener(AppWarp.Events.onMoveCompleted, undefined);
-        this.setNotifyListener(AppWarp.Events.onGameStarted, undefined);
-        this.setNotifyListener(AppWarp.Events.onGameStopped, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserPaused, undefined);
-        this.setNotifyListener(AppWarp.Events.onUserResumed, undefined);
-        this.setNotifyListener(AppWarp.Events.onNextTurnRequested, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onRoomCreated, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onRoomDestroyed, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserLeftRoom, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserJoinedRoom, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserLeftLobby, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserJoinedLobby, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onChatReceived, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onPrivateChatReceived, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onPrivateUpdateReceived, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUpdatePeersReceived, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserChangeRoomProperty, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onMoveCompleted, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onGameStarted, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onGameStopped, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserPaused, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onUserResumed, undefined);
+        this.setNotifyListener($wnd.AppWarp.Events.onNextTurnRequested, undefined);
     }-*/;
 
 	/**
