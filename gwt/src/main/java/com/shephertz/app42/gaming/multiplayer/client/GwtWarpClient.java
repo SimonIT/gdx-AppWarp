@@ -112,10 +112,10 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 */
 	public final native void addConnectionRequestListener(ConnectionRequestListener listener) /*-{
         this.setResponseListener($wnd.AppWarp.Events.onConnectDone, function (res, reasonCode) {
-            listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onConnectDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/ConnectEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ConnectEvent::new(BI)(res.getResultCode(), reasonCode));
+            listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onConnectDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/ConnectEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ConnectEvent::new(BI)(res, reasonCode));
         });
         this.setResponseListener($wnd.AppWarp.Events.onDisconnectDone, function (res) {
-            listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onDisconnectDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/ConnectEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ConnectEvent::new(B)(res.getResultCode()));
+            listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onDisconnectDone(Lcom/shephertz/app42/gaming/multiplayer/client/events/ConnectEvent;)(@com.shephertz.app42.gaming.multiplayer.client.events.ConnectEvent::new(B)(res));
         });
         this.setResponseListener("onInitUDPDone", function (res) {
             listener.@com.shephertz.app42.gaming.multiplayer.client.listener.ConnectionRequestListener::onInitUDPDone(B)(res);
