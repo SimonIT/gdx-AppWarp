@@ -42,7 +42,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return WarpResponseResultCode
 	 */
 	public native static byte initialize(String apiKey, String pvtKey) /*-{
-        return $wnd.AppWarp.WarpClient.initialize(apiKey, secretKey);
+        return $wnd.AppWarp.WarpClient.initialize(apiKey, pvtKey);
     }-*/;
 
 	/**
@@ -56,7 +56,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @return WarpResponseResultCode
 	 */
 	public native static byte initialize(String apiKey, String pvtKey, String server) /*-{
-        return $wnd.AppWarp.WarpClient.initialize(apiKey, secretKey, server);
+        return $wnd.AppWarp.WarpClient.initialize(apiKey, pvtKey, server);
     }-*/;
 
 	/**
