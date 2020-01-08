@@ -213,9 +213,7 @@ public interface WarpClient {
 	 * request will be provided in the onDisConnectDone callback of the
 	 * ConnectionRequestListener.
 	 */
-	void disconnect() /*-{
-						this.disconnect();
-						}-*/;
+	void disconnect();
 
 	/**
 	 * Returns the current connection state of the WarpClient instance.
