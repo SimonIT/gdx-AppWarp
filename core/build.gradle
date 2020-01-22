@@ -6,6 +6,14 @@ version '2.3'
 group 'com.shephertz.app42.gaming.multiplayer'
 sourceCompatibility = '1.8'
 
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+}
+
+dependencies {
+    compile "com.badlogicgames.gdx:gdx:1.9.10"
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     archiveClassifier.set("sources")
     from sourceSets.main.allSource

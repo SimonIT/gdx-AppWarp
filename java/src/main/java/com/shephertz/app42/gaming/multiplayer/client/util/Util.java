@@ -1,5 +1,6 @@
 package com.shephertz.app42.gaming.multiplayer.client.util;
 
+import com.badlogic.gdx.utils.Base64Coder;
 import org.json.JSONObject;
 
 import javax.crypto.Mac;
@@ -35,7 +36,7 @@ public class Util {
 	}
 
 	public static String calculateSignature(String apiKey, String version, String user, String timeStamp,
-			String secretKey) {
+											String secretKey) {
 		Hashtable<String, String> params = new Hashtable<>();
 		params.put("apiKey", apiKey);
 		params.put("version", version);
@@ -69,7 +70,7 @@ public class Util {
 		SecretKeySpec secret = new SecretKeySpec(key.getBytes(), mac.getAlgorithm());
 		mac.init(secret);
 		byte[] digest = mac.doFinal(baseString.getBytes());
-		return Base64.encodeBytes(digest);
+		return new String(Base64Coder.encode(digest));
 	}
 
 	public static String getUTCFormattedTimestamp() {
