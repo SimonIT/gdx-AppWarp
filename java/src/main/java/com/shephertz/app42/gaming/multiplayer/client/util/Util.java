@@ -1,6 +1,8 @@
 package com.shephertz.app42.gaming.multiplayer.client.util;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Base64Coder;
+import com.badlogic.gdx.utils.TimeUtils;
 import org.json.JSONObject;
 
 import javax.crypto.Mac;
@@ -41,16 +43,12 @@ public class Util {
 		params.put("apiKey", apiKey);
 		params.put("version", version);
 		params.put("timeStamp", timeStamp);
-		params.put("user", user);
+		if (user != null) params.put("user", user);
 		return sign(secretKey, params);
 	}
 
 	public static String calculateSignature(String apiKey, String version, String timeStamp, String secretKey) {
-		Hashtable<String, String> params = new Hashtable<>();
-		params.put("apiKey", apiKey);
-		params.put("version", version);
-		params.put("timeStamp", timeStamp);
-		return sign(secretKey, params);
+		return calculateSignature(apiKey, version, null, timeStamp, secretKey);
 	}
 
 	public static String sign(String secretKey, Hashtable<String, String> params) {
@@ -74,9 +72,7 @@ public class Util {
 	}
 
 	public static String getUTCFormattedTimestamp() {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-		df.setTimeZone(TimeZone.getTimeZone("UTC"));
-		return df.format(new Date());
+		return getUTCFormattedTimestamp(new Date());
 	}
 
 	public static String getUTCFormattedTimestamp(Date date) {
@@ -126,7 +122,7 @@ public class Util {
 
 	public static void trace(String message) {
 		if (TRACE_ENABLED) {
-			System.out.println("AppWarpTrace :" + System.currentTimeMillis() + ":" + message);
+			Gdx.app.error("AppWarpTrace", TimeUtils.millis() + ":" + message);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.shephertz.app42.gaming.multiplayer.client;
 
+import com.badlogic.gdx.Gdx;
 import com.shephertz.app42.gaming.multiplayer.client.util.Util;
 import org.json.JSONObject;
 
@@ -18,7 +19,7 @@ public class RestConnector {
 		try {
 			this.theGame = JavaWarpClient.getInstance();
 		} catch (Exception var2) {
-			var2.printStackTrace(System.err);
+			Gdx.app.error("RestConnector", "init", var2);
 		}
 
 	}
@@ -31,7 +32,7 @@ public class RestConnector {
 					RestConnector.this.theGame.onLookUpServer(lookUpStatus);
 				}
 			} catch (Exception var2) {
-				var2.printStackTrace(System.err);
+				Gdx.app.error("RestConnector", "fetchHostIp", var2);
 				RestConnector.this.theGame.onLookUpServer((byte) 5);
 			}
 

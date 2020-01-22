@@ -1,5 +1,7 @@
 package com.shephertz.app42.gaming.multiplayer.client;
 
+import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.Timer;
 import com.shephertz.app42.gaming.api.client.App42CallBack;
 import com.shephertz.app42.gaming.api.storage.Query;
 import com.shephertz.app42.gaming.api.storage.QueryBuilder;
@@ -583,7 +585,7 @@ public class JavaWarpClient implements WarpClient {
 				}
 
 				if (this.connectionTimer != null) {
-					this.connectionTimer.cancel();
+					this.connectionTimer.clear();
 					this.connectionTimer = null;
 					this.connectTimeoutTask = null;
 				}
@@ -1279,15 +1281,14 @@ public class JavaWarpClient implements WarpClient {
 	}
 
 	void onConnect(boolean success) {
-		long currentTime = System.currentTimeMillis() + 15000L;
 		if (this.connectionTimer != null) {
-			this.connectionTimer.cancel();
+			this.connectionTimer.clear();
 			this.connectionTimer = null;
 			this.connectTimeoutTask = null;
 		}
 
 		if (this.connectionRecoveryTimer != null) {
-			this.connectionRecoveryTimer.cancel();
+			this.connectionRecoveryTimer.clear();
 			this.connectionRecoveryTimer = null;
 			this.connectAutoRecoveryTask = null;
 		}
@@ -1325,13 +1326,13 @@ public class JavaWarpClient implements WarpClient {
 	private void startRecoveryConnectionTimer() {
 		this.connectAutoRecoveryTask = new JavaWarpClient.ConnectionAutoRecoveryTask();
 		this.connectionRecoveryTimer = new Timer();
-		this.connectionRecoveryTimer.schedule(this.connectAutoRecoveryTask, 3000L);
+		this.connectionRecoveryTimer.scheduleTask(this.connectAutoRecoveryTask, 3000L);
 	}
 
 	private void sendAuthRequest(String user, int sid) {
 		try {
 			JSONObject authObj = new JSONObject();
-			String timeStamp = String.valueOf(System.currentTimeMillis());
+			String timeStamp = String.valueOf(TimeUtils.millis());
 			authObj.put("version", "Java_2.1.2");
 			authObj.put("timeStamp", timeStamp);
 			authObj.put("user", user);
@@ -3113,7 +3114,7 @@ public class JavaWarpClient implements WarpClient {
 	private void startChannelConnectTimer() {
 		this.connectTimeoutTask = new JavaWarpClient.ConnectionWatchTask(this);
 		this.connectionTimer = new Timer();
-		this.connectionTimer.schedule(this.connectTimeoutTask, 6000L);
+		this.connectionTimer.scheduleTask(this.connectTimeoutTask, 6000L);
 	}
 
 	public void onLookUpServer(byte lookUpaStatus) {
@@ -3287,7 +3288,7 @@ public class JavaWarpClient implements WarpClient {
 		}
 	}
 
-	private class ConnectionWatchTask extends TimerTask {
+	private class ConnectionWatchTask extends Timer.Task {
 		JavaWarpClient owner;
 
 		ConnectionWatchTask(JavaWarpClient client) {
@@ -3309,7 +3310,7 @@ public class JavaWarpClient implements WarpClient {
 		}
 	}
 
-	class ConnectionAutoRecoveryTask extends TimerTask {
+	class ConnectionAutoRecoveryTask extends Timer.Task {
 		public void run() {
 			JavaWarpClient.this.RecoverConnection();
 		}
