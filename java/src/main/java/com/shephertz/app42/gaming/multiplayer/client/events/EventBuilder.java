@@ -163,11 +163,7 @@ public class EventBuilder {
 			}
 		}
 
-		RoomData[] roomData = new RoomData[roomsDataList.size()];
-
-		for (int i = 0; i < roomsDataList.size(); ++i) {
-			roomData[i] = roomsDataList.get(i);
-		}
+		RoomData[] roomData = roomsDataList.toArray(new RoomData[0]);
 
 		return new MatchedRoomsEvent(msg.getResultCode(), roomData);
 	}

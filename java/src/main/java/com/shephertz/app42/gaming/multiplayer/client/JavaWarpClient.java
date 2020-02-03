@@ -3050,53 +3050,32 @@ public class JavaWarpClient implements WarpClient {
 
 	private void fireConnectionEvent(byte resultCode) {
 		ConnectEvent event = new ConnectEvent(resultCode);
-		Object[] listenersCopy = this.ConnectionRequestListeners.toArray();
 
-		for (Object o : listenersCopy) {
-			ConnectionRequestListener listener = (ConnectionRequestListener) o;
-			if (this.ConnectionRequestListeners.contains(listener)) {
-				listener.onConnectDone(event);
-			}
+		for (ConnectionRequestListener listener : this.ConnectionRequestListeners) {
+			listener.onConnectDone(event);
 		}
-
 	}
 
 	private void fireConnectionEvent(byte resultCode, int reasonCode) {
 		ConnectEvent event = new ConnectEvent(resultCode, reasonCode);
-		Object[] listenersCopy = this.ConnectionRequestListeners.toArray();
 
-		for (Object o : listenersCopy) {
-			ConnectionRequestListener listener = (ConnectionRequestListener) o;
-			if (this.ConnectionRequestListeners.contains(listener)) {
-				listener.onConnectDone(event);
-			}
+		for (ConnectionRequestListener listener : this.ConnectionRequestListeners) {
+			listener.onConnectDone(event);
 		}
-
 	}
 
 	protected void fireUDPEvent(byte resultCode) {
-		Object[] listenersCopy = this.ConnectionRequestListeners.toArray();
-
-		for (Object o : listenersCopy) {
-			ConnectionRequestListener listener = (ConnectionRequestListener) o;
-			if (this.ConnectionRequestListeners.contains(listener)) {
-				listener.onInitUDPDone(resultCode);
-			}
+		for (ConnectionRequestListener listener : this.ConnectionRequestListeners) {
+			listener.onInitUDPDone(resultCode);
 		}
-
 	}
 
 	private void fireDisconnectEvent(byte resultCode) {
 		ConnectEvent event = new ConnectEvent(resultCode);
-		Object[] listenersCopy = this.ConnectionRequestListeners.toArray();
 
-		for (Object o : listenersCopy) {
-			ConnectionRequestListener listener = (ConnectionRequestListener) o;
-			if (this.ConnectionRequestListeners.contains(listener)) {
-				listener.onDisconnectDone(event);
-			}
+		for (ConnectionRequestListener listener : this.ConnectionRequestListeners) {
+			listener.onDisconnectDone(event);
 		}
-
 	}
 
 	private boolean isNullOrEmpty(String check) {
