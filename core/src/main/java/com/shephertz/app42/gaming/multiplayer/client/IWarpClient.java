@@ -2,9 +2,9 @@ package com.shephertz.app42.gaming.multiplayer.client;
 
 import com.shephertz.app42.gaming.multiplayer.client.listener.*;
 
-import java.util.Map;
+import java.util.HashMap;
 
-public interface WarpClient {
+public interface IWarpClient {
 	/**
 	 * It gives the Api Key of the current established connection,otherwise returns
 	 * null.
@@ -390,7 +390,7 @@ public interface WarpClient {
 	 * @param maxUsers        number of maximum users allowed in the room
 	 * @param tableProperties properties of room for matchmaking ( pass null if not required )
 	 */
-	void createRoom(String name, String owner, int maxUsers, Map<String, Object> tableProperties);
+	void createRoom(String name, String owner, int maxUsers, HashMap<String, Object> tableProperties);
 
 	/**
 	 * Sends a create turn based room request to the server with the given meta
@@ -405,9 +405,8 @@ public interface WarpClient {
 	 * @param maxUsers        number of maximum users allowed in the room
 	 * @param tableProperties properties of room ( can be null )
 	 * @param time            the time ( in seconds ) allowed for a user to complete its turn
-	 *                        and send a move .
 	 */
-	void createTurnRoom(String name, String owner, int maxUsers, Map<String, Object> tableProperties, int time);
+	void createTurnRoom(String name, String owner, int maxUsers, HashMap<String, Object> tableProperties, int time);
 
 	/**
 	 * Sends a move to the server for the joined turn based room.Result of the
@@ -549,7 +548,7 @@ public interface WarpClient {
 	 * @param tableProperties properties that will be set for the room
 	 * @param removeArray     properties that will be removed for the room
 	 */
-	void updateRoomProperties(String roomID, Map<String, Object> tableProperties, String[] removeArray);
+	void updateRoomProperties(String roomID, HashMap<String, Object> tableProperties, String[] removeArray);
 
 	/**
 	 * Lock the properties associated with the joined room on the server for
@@ -562,7 +561,7 @@ public interface WarpClient {
 	 *
 	 * @param tableProperties properties to be lock for the room
 	 */
-	void lockProperties(Map<String, Object> tableProperties);
+	void lockProperties(HashMap<String, Object> tableProperties);
 
 	/**
 	 * Unlock the properties associated with the joined room on the server for
@@ -585,7 +584,7 @@ public interface WarpClient {
 	 *
 	 * @param tableProperties properties of the room to be joined
 	 */
-	void joinRoomWithProperties(Map<String, Object> tableProperties);
+	void joinRoomWithProperties(HashMap<String, Object> tableProperties);
 
 	/**
 	 * Retrieves information of the rooms that contain at least minUsers and at most
@@ -606,19 +605,18 @@ public interface WarpClient {
 	 *
 	 * @param properties properties of the room to be joined
 	 */
-	void getRoomsWithProperties(Map<String, Object> properties);
+	void getRoomsWithProperties(HashMap<String, Object> properties);
 
 	/**
 	 * Retrieves information of the rooms that contain at least minUsers , at most
 	 * maxUsers and set of property value pairs in them. Result is provided in the
 	 * onGetMatchedRoomsDone callback of the registered ZoneRequestListener objects.
 	 * This is useful in building a filtered list of rooms.
-	 *
-	 * @param minUser    number of minimum users in room to be joined
+	 *  @param minUser    number of minimum users in room to be joined
 	 * @param maxUsers   number of maximum users in room to be joined
 	 * @param properties properties of the room to be joined
 	 */
-	void getRoomInRangeWithProperties(int minUser, int maxUsers, Map<String, Object> properties);
+	void getRoomInRangeWithProperties(int minUser, int maxUsers, HashMap<String, Object> properties);
 
 	/**
 	 * Sends a leave room request to the server. Result of the request is provided

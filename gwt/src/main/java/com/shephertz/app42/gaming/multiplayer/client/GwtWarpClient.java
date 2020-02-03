@@ -3,9 +3,9 @@ package com.shephertz.app42.gaming.multiplayer.client;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.shephertz.app42.gaming.multiplayer.client.listener.*;
 
-import java.util.Map;
+import java.util.HashMap;
 
-public class GwtWarpClient extends JavaScriptObject implements WarpClient {
+public class GwtWarpClient extends JavaScriptObject implements IWarpClient {
 	protected GwtWarpClient() {
 	}
 
@@ -747,13 +747,12 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * ZoneRequestListener objects. If successful, this will create a dynamic room
 	 * at the server. These rooms lifetime is limited till the time users are inside
 	 * it. Read more about Rooms here.
-	 *
-	 * @param name            name of the room
+	 *  @param name            name of the room
 	 * @param owner           administrator of the room
 	 * @param maxUsers        number of maximum users allowed in the room
 	 * @param tableProperties properties of room for matchmaking ( pass null if not required )
 	 */
-	public final native void createRoom(String name, String owner, int maxUsers, Map<String, Object> tableProperties) /*-{
+	public final native void createRoom(String name, String owner, int maxUsers, HashMap<String, Object> tableProperties) /*-{
         this.createRoom(name, owner, maxUsers, @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(tableProperties));
     }-*/;
 
@@ -772,7 +771,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param time            the time ( in seconds ) allowed for a user to complete its turn
 	 *                        and send a move .
 	 */
-	public final native void createTurnRoom(String name, String owner, int maxUsers, Map<String, Object> tableProperties, int time) /*-{
+	public final native void createTurnRoom(String name, String owner, int maxUsers, HashMap<String, Object> tableProperties, int time) /*-{
         this.createTurnRoom(name, owner, maxUsers, @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(tableProperties), time);
     }-*/;
 
@@ -937,12 +936,11 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * request (if successful) will also result in an onUserChangeRoomProperty
 	 * notification on the registered NotifyListener objects to be triggered for all
 	 * subscribed users of the room.
-	 *
-	 * @param roomID          Id of the room
+	 *  @param roomID          Id of the room
 	 * @param tableProperties properties that will be set for the room
 	 * @param removeArray     properties that will be removed for the room
 	 */
-	public final native void updateRoomProperties(String roomID, Map<String, Object> tableProperties, String[] removeArray) /*-{
+	public final native void updateRoomProperties(String roomID, HashMap<String, Object> tableProperties, String[] removeArray) /*-{
         this.updateRoomProperties(roomID, @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(tableProperties), @com.google.gwt.core.client.JsArrayUtils::readOnlyJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(removeArray));
     }-*/;
 
@@ -957,7 +955,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 *
 	 * @param tableProperties properties to be lock for the room
 	 */
-	public final native void lockProperties(Map<String, Object> tableProperties) /*-{
+	public final native void lockProperties(HashMap<String, Object> tableProperties) /*-{
         this.lockProperties(@com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(tableProperties));
     }-*/;
 
@@ -984,7 +982,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 *
 	 * @param tableProperties properties of the room to be joined
 	 */
-	public final native void joinRoomWithProperties(Map<String, Object> tableProperties) /*-{
+	public final native void joinRoomWithProperties(HashMap<String, Object> tableProperties) /*-{
         this.joinRoomWithProperties(@com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(tableProperties));
     }-*/;
 
@@ -1009,7 +1007,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 *
 	 * @param properties properties of the room to be joined
 	 */
-	public final native void getRoomsWithProperties(Map<String, Object> properties) /*-{
+	public final native void getRoomsWithProperties(HashMap<String, Object> properties) /*-{
         this.getRoomsWithProperties(@com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(properties));
     }-*/;
 
@@ -1023,7 +1021,7 @@ public class GwtWarpClient extends JavaScriptObject implements WarpClient {
 	 * @param maxUsers   number of maximum users in room to be joined
 	 * @param properties properties of the room to be joined
 	 */
-	public final native void getRoomInRangeWithProperties(int minUser, int maxUsers, Map<String, Object> properties) /*-{
+	public final native void getRoomInRangeWithProperties(int minUser, int maxUsers, HashMap<String, Object> properties) /*-{
         this.getRoomInRangeWithProp(minUser, maxUsers, @com.shephertz.app42.gaming.multiplayer.client.util.JsUtil::toJsMap(*)(properties));
     }-*/;
 
