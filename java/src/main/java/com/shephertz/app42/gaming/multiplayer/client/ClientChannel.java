@@ -1,5 +1,6 @@
 package com.shephertz.app42.gaming.multiplayer.client;
 
+import com.badlogic.gdx.utils.Timer;
 import com.shephertz.app42.gaming.multiplayer.client.message.WarpMessage;
 import com.shephertz.app42.gaming.multiplayer.client.message.WarpRequestMessage;
 import com.shephertz.app42.gaming.multiplayer.client.message.WarpResponseMessage;
@@ -14,7 +15,9 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 class ClientChannel implements Runnable {
 	private static boolean waitForMore = false;
@@ -101,7 +104,7 @@ class ClientChannel implements Runnable {
 	void startKeepAlives() {
 		this.keepAliveTimer = new Timer();
 		this.keepAliveTask = new ClientChannel.KeepAliveTask(this);
-		this.keepAliveTimer.schedule(this.keepAliveTask, 2000L);
+		this.keepAliveTimer.scheduleTask(this.keepAliveTask, 2000L);
 	}
 
 	private synchronized void channelWrite(SelectionKey key) throws Exception {
@@ -173,13 +176,13 @@ class ClientChannel implements Runnable {
 			key.interestOps(SelectionKey.OP_WRITE);
 			this.selector.wakeup();
 			if (this.keepAliveTimer != null) {
-				this.keepAliveTimer.cancel();
+				this.keepAliveTimer.clear();
 			}
 
 			if (this.theGame.getConnectionState() == 0) {
 				this.keepAliveTimer = new Timer();
 				this.keepAliveTask = new ClientChannel.KeepAliveTask(this);
-				this.keepAliveTimer.schedule(this.keepAliveTask, 2000L);
+				this.keepAliveTimer.scheduleTask(this.keepAliveTask, 2000L);
 			}
 		} catch (Exception var3) {
 			Util.trace("Exception in sending Request " + var3);
@@ -198,13 +201,13 @@ class ClientChannel implements Runnable {
 		}
 
 		if (this.keepAliveTimer != null) {
-			this.keepAliveTimer.cancel();
+			this.keepAliveTimer.clear();;
 			this.keepAliveTimer = null;
 		}
 
 	}
 
-	private class KeepAliveTask extends TimerTask {
+	private class KeepAliveTask extends Timer.Task {
 		ClientChannel owner;
 
 		KeepAliveTask(ClientChannel channel) {

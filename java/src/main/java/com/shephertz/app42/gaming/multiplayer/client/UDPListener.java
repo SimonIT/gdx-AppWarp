@@ -1,5 +1,6 @@
 package com.shephertz.app42.gaming.multiplayer.client;
 
+import com.badlogic.gdx.utils.Timer;
 import com.shephertz.app42.gaming.multiplayer.client.message.WarpMessage;
 import com.shephertz.app42.gaming.multiplayer.client.message.WarpRequestMessage;
 import com.shephertz.app42.gaming.multiplayer.client.message.WarpResponseMessage;
@@ -14,8 +15,6 @@ import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class UDPListener implements Runnable {
 	private InetAddress warpServerIP;
@@ -73,7 +72,7 @@ public class UDPListener implements Runnable {
 								}
 							}
 						}
-					} catch (SocketTimeoutException var10) {
+					} catch (SocketTimeoutException ignored) {
 					}
 
 					DatagramPacket packetToSend;
@@ -123,18 +122,18 @@ public class UDPListener implements Runnable {
 
 	private void startTimer() {
 		this.keepAliveTimer = new Timer();
-		this.keepAliveTimer.schedule(new UDPListener.KeepAliveTask(this), 10000L);
+		this.keepAliveTimer.scheduleTask(new UDPListener.KeepAliveTask(this), 10000L);
 	}
 
 	private void stopTimer() {
 		if (this.keepAliveTimer != null) {
-			this.keepAliveTimer.cancel();
+			this.keepAliveTimer.clear();
 			this.keepAliveTimer = null;
 		}
 
 	}
 
-	private class KeepAliveTask extends TimerTask {
+	private class KeepAliveTask extends Timer.Task {
 		UDPListener owner;
 
 		KeepAliveTask(UDPListener listener) {
