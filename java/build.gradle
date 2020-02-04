@@ -1,6 +1,14 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
 apply plugin: "java"
 apply plugin: "maven"
 
+configurations {
+    provided
+    compile.extendsFrom provided
+}
 
 group 'de.SimonIT.App42MultiPlayerGamingSDK'
 sourceCompatibility = '1.8'
@@ -12,7 +20,7 @@ repositories {
 
 dependencies {
     implementation project(":core")
-    compile files("lib/App42MultiPlayerGamingSDK.jar")
+    shadow files("lib/App42MultiPlayerGamingSDK.jar")
     compile group: 'org.json', name: 'json', version: '20190722'
 }
 
@@ -26,7 +34,14 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+shadowJar {
+    minimize()
+    configurations = [project.configurations.shadow]
+    archiveFileName = "$archiveBaseName-$archiveVersion.$archiveExtension"
+}
+
 artifacts {
     archives sourcesJar
     archives javadocJar
+    archives shadowJar
 }
