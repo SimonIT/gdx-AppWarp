@@ -2,7 +2,7 @@ apply plugin: "java"
 apply plugin: "maven"
 
 
-group 'com.shephertz.app42.gaming.multiplayer'
+group 'de.SimonIT.App42MultiPlayerGamingSDK'
 sourceCompatibility = '1.8'
 version '2.3'
 

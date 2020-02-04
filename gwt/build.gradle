@@ -6,7 +6,7 @@ apply plugin: "maven"
 apply plugin: 'org.wisepersist.gwt'
 
 
-group 'com.shephertz.app42.gaming.multiplayer'
+group 'de.SimonIT.App42MultiPlayerGamingSDK'
 sourceCompatibility = '1.8'
 version '2.1'
 
