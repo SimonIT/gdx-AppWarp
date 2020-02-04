@@ -35,7 +35,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 shadowJar {
-    minimize()
     configurations = [project.configurations.shadow]
     archiveFileName = "$archiveBaseName-$archiveVersion.$archiveExtension"
 }
