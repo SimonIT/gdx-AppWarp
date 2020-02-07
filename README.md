@@ -11,14 +11,14 @@ You can replace _master-SNAPSHOT_ with any tag from the release section to use a
 desktop, ios:
 
 ```groovy
-api 'com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT'
+api 'com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT:all'
 ```
 
 
 android:
 Android contains already the json dependency, so we exclude it
 ```groovy
-api('com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT') {
+api('com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT:all') {
     exclude group: 'org.json', module: 'json'
 }
 ```
@@ -30,6 +30,12 @@ api 'com.github.SimonIT.App42MultiPlayerGamingSDK:core:master-SNAPSHOT:sources'
 api 'com.github.SimonIT.App42MultiPlayerGamingSDK:gwt:master-SNAPSHOT'
 api 'com.github.SimonIT.App42MultiPlayerGamingSDK:gwt:master-SNAPSHOT:sources'
 ```
+and add
+
+```xml
+<inherits name='de.SimonIT.App42MultiPlayerGamingGwtSDK'/>
+```
+to your _GdxDefinition.gwt.xml_.
 
 core:
 Core needs only the interface
