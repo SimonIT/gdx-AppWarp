@@ -199,7 +199,7 @@ public class JavaWarpClient implements WarpClient {
 		clientInstance.addZoneRequestListener(new com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener() {
 			@Override
 			public void onDeleteRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onDeleteRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onDeleteRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
@@ -209,7 +209,7 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onCreateRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onCreateRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onCreateRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
@@ -231,8 +231,7 @@ public class JavaWarpClient implements WarpClient {
 			public void onGetMatchedRoomsDone(com.shephertz.app42.gaming.multiplayer.client.events.MatchedRoomsEvent matchedRoomsEvent) {
 				RoomData[] roomData = new RoomData[matchedRoomsEvent.getRoomsData().length];
 				for (int i = 0; i < matchedRoomsEvent.getRoomsData().length; i++) {
-					com.shephertz.app42.gaming.multiplayer.client.events.RoomData data = matchedRoomsEvent.getRoomsData()[i];
-					roomData[i] = new RoomData(data.getId(), data.getRoomOwner(), data.getName(), data.getMaxUsers());
+					roomData[i] = Mapper.createRoomData(matchedRoomsEvent.getRoomsData()[i]);
 				}
 				listener.onGetMatchedRoomsDone(new MatchedRoomsEvent(matchedRoomsEvent.getResult(), roomData));
 			}
@@ -266,7 +265,7 @@ public class JavaWarpClient implements WarpClient {
 		clientInstance.removeZoneRequestListener(new com.shephertz.app42.gaming.multiplayer.client.listener.ZoneRequestListener() {
 			@Override
 			public void onDeleteRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onDeleteRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onDeleteRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
@@ -276,7 +275,7 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onCreateRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onCreateRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onCreateRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
@@ -298,8 +297,7 @@ public class JavaWarpClient implements WarpClient {
 			public void onGetMatchedRoomsDone(com.shephertz.app42.gaming.multiplayer.client.events.MatchedRoomsEvent matchedRoomsEvent) {
 				RoomData[] roomData = new RoomData[matchedRoomsEvent.getRoomsData().length];
 				for (int i = 0; i < matchedRoomsEvent.getRoomsData().length; i++) {
-					com.shephertz.app42.gaming.multiplayer.client.events.RoomData data = matchedRoomsEvent.getRoomsData()[i];
-					roomData[i] = new RoomData(data.getId(), data.getRoomOwner(), data.getName(), data.getMaxUsers());
+					roomData[i] = Mapper.createRoomData(matchedRoomsEvent.getRoomsData()[i]);
 				}
 				listener.onGetMatchedRoomsDone(new MatchedRoomsEvent(matchedRoomsEvent.getResult(), roomData));
 			}
@@ -353,7 +351,7 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onGetLiveLobbyInfoDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onGetLiveLobbyInfoDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onGetLiveLobbyInfoDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 		});
 	}
@@ -389,7 +387,7 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onGetLiveLobbyInfoDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onGetLiveLobbyInfoDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onGetLiveLobbyInfoDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 		});
 	}
@@ -406,37 +404,37 @@ public class JavaWarpClient implements WarpClient {
 		clientInstance.addRoomRequestListener(new com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener() {
 			@Override
 			public void onSubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onSubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onSubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onUnSubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onUnSubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onUnSubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onJoinRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onJoinRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onJoinRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onLeaveRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onLeaveRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onLeaveRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onGetLiveRoomInfoDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onGetLiveRoomInfoDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onGetLiveRoomInfoDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 
 			@Override
 			public void onSetCustomRoomDataDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onSetCustomRoomDataDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onSetCustomRoomDataDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 
 			@Override
 			public void onUpdatePropertyDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onUpdatePropertyDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onUpdatePropertyDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 
 			@Override
@@ -451,12 +449,12 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onJoinAndSubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onJoinAndSubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onJoinAndSubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onLeaveAndUnsubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onLeaveAndUnsubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onLeaveAndUnsubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 		});
 	}
@@ -565,37 +563,37 @@ public class JavaWarpClient implements WarpClient {
 		clientInstance.removeRoomRequestListener(new com.shephertz.app42.gaming.multiplayer.client.listener.RoomRequestListener() {
 			@Override
 			public void onSubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onSubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onSubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onUnSubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onUnSubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onUnSubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onJoinRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onJoinRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onJoinRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onLeaveRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onLeaveRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onLeaveRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onGetLiveRoomInfoDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onGetLiveRoomInfoDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onGetLiveRoomInfoDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 
 			@Override
 			public void onSetCustomRoomDataDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onSetCustomRoomDataDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onSetCustomRoomDataDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 
 			@Override
 			public void onUpdatePropertyDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveRoomInfoEvent liveRoomInfoEvent) {
-				listener.onUpdatePropertyDone(new LiveRoomInfoEvent(new RoomData(liveRoomInfoEvent.getData().getId(), liveRoomInfoEvent.getData().getRoomOwner(), liveRoomInfoEvent.getData().getName(), liveRoomInfoEvent.getData().getMaxUsers()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
+				listener.onUpdatePropertyDone(new LiveRoomInfoEvent(Mapper.createRoomData(liveRoomInfoEvent.getData()), liveRoomInfoEvent.getResult(), liveRoomInfoEvent.getJoinedUsers(), liveRoomInfoEvent.getCustomData(), liveRoomInfoEvent.getProperties(), liveRoomInfoEvent.getLockProperties()));
 			}
 
 			@Override
@@ -610,12 +608,12 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onJoinAndSubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onJoinAndSubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onJoinAndSubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 
 			@Override
 			public void onLeaveAndUnsubscribeRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent roomEvent) {
-				listener.onLeaveAndUnsubscribeRoomDone(new RoomEvent(new RoomData(roomEvent.getData().getId(), roomEvent.getData().getRoomOwner(), roomEvent.getData().getName(), roomEvent.getData().getMaxUsers()), roomEvent.getResult()));
+				listener.onLeaveAndUnsubscribeRoomDone(new RoomEvent(Mapper.createRoomData(roomEvent.getData()), roomEvent.getResult()));
 			}
 		});
 	}
@@ -738,22 +736,22 @@ public class JavaWarpClient implements WarpClient {
 		clientInstance.addNotificationListener(new com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener() {
 			@Override
 			public void onRoomCreated(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData) {
-				listener.onRoomCreated(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()));
+				listener.onRoomCreated(Mapper.createRoomData(roomData));
 			}
 
 			@Override
 			public void onRoomDestroyed(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData) {
-				listener.onRoomDestroyed(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()));
+				listener.onRoomDestroyed(Mapper.createRoomData(roomData));
 			}
 
 			@Override
 			public void onUserLeftRoom(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData, String s) {
-				listener.onUserLeftRoom(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()), s);
+				listener.onUserLeftRoom(Mapper.createRoomData(roomData), s);
 			}
 
 			@Override
 			public void onUserJoinedRoom(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData, String s) {
-				listener.onUserJoinedRoom(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()), s);
+				listener.onUserJoinedRoom(Mapper.createRoomData(roomData), s);
 			}
 
 			@Override
@@ -788,7 +786,7 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onUserChangeRoomProperty(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData, String s, HashMap<String, Object> hashMap, HashMap<String, String> hashMap1) {
-				listener.onUserChangeRoomProperty(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()), s, hashMap, hashMap1);
+				listener.onUserChangeRoomProperty(Mapper.createRoomData(roomData), s, hashMap, hashMap1);
 			}
 
 			@Override
@@ -835,22 +833,22 @@ public class JavaWarpClient implements WarpClient {
 		clientInstance.removeNotificationListener(new com.shephertz.app42.gaming.multiplayer.client.listener.NotifyListener() {
 			@Override
 			public void onRoomCreated(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData) {
-				listener.onRoomCreated(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()));
+				listener.onRoomCreated(Mapper.createRoomData(roomData));
 			}
 
 			@Override
 			public void onRoomDestroyed(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData) {
-				listener.onRoomDestroyed(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()));
+				listener.onRoomDestroyed(Mapper.createRoomData(roomData));
 			}
 
 			@Override
 			public void onUserLeftRoom(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData, String s) {
-				listener.onUserLeftRoom(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()), s);
+				listener.onUserLeftRoom(Mapper.createRoomData(roomData), s);
 			}
 
 			@Override
 			public void onUserJoinedRoom(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData, String s) {
-				listener.onUserJoinedRoom(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()), s);
+				listener.onUserJoinedRoom(Mapper.createRoomData(roomData), s);
 			}
 
 			@Override
@@ -885,7 +883,7 @@ public class JavaWarpClient implements WarpClient {
 
 			@Override
 			public void onUserChangeRoomProperty(com.shephertz.app42.gaming.multiplayer.client.events.RoomData roomData, String s, HashMap<String, Object> hashMap, HashMap<String, String> hashMap1) {
-				listener.onUserChangeRoomProperty(new RoomData(roomData.getId(), roomData.getRoomOwner(), roomData.getName(), roomData.getMaxUsers()), s, hashMap, hashMap1);
+				listener.onUserChangeRoomProperty(Mapper.createRoomData(roomData), s, hashMap, hashMap1);
 			}
 
 			@Override

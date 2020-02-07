@@ -6,6 +6,10 @@ version '2.3'
 group 'com.shephertz.app42.gaming.multiplayer'
 sourceCompatibility = '1.8'
 
+dependencies {
+    compileOnly 'org.jetbrains:annotations:18.0.0'
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     archiveClassifier.set("sources")
     from sourceSets.main.allSource
