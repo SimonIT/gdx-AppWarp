@@ -21,7 +21,7 @@ repositories {
 dependencies {
     implementation project(":core")
     shadow files("lib/App42MultiPlayerGamingSDK.jar")
-    compile group: 'org.json', name: 'json', version: '20190722'
+    compile group: 'org.json', name: 'json', version: '20200518'
     compileOnly 'org.jetbrains:annotations:19.0.0'
 }
 
