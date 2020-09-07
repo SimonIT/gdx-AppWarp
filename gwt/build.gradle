@@ -1,5 +1,5 @@
 plugins {
-    id "org.wisepersist.gwt" version "1.1.4"
+    id "org.wisepersist.gwt" version "1.1.6"
 }
 apply plugin: 'java'
 apply plugin: "maven"
