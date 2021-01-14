@@ -1,7 +1,6 @@
-# App42MultiPlayerGamingSDK for libgdx
-[![Build Status](https://travis-ci.com/SimonIT/App42MultiPlayerGamingSDK.svg?branch=master)](https://travis-ci.com/SimonIT/App42MultiPlayerGamingSDK)
-[![](https://jitpack.io/v/SimonIT/App42MultiPlayerGamingSDK.svg)](https://jitpack.io/#SimonIT/App42MultiPlayerGamingSDK)
-[![GitHub](https://img.shields.io/github/license/SimonIT/App42MultiPlayerGamingSDK)](https://github.com/SimonIT/App42MultiPlayerGamingSDK/blob/master/LICENSE)
+# gdx-AppWarp
+[![](https://jitpack.io/v/SimonIT/gdx-AppWarp.svg)](https://jitpack.io/#SimonIT/gdx-AppWarp)
+[![GitHub](https://img.shields.io/github/license/SimonIT/gdx-AppWarp)](https://github.com/SimonIT/gdx-AppWarp/blob/master/LICENSE)
 
 The goal of this project is to provide a sdk for all platforms available with libgdx. For this, I'm using the version 2.3 of the [AppWarp Java SDK](https://github.com/shephertz/AppWarp_JAVA_SDK_JAR) and for gwt version 2.1 of the [AppWarp JS SDK](https://github.com/shephertz/AppWarp_JS_HTML5_SDK), for which I created the bindings to the listeners and events.
 
@@ -12,14 +11,14 @@ You can replace _master-SNAPSHOT_ with any tag from the release section to use a
 desktop, ios:
 
 ```groovy
-api 'com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT:all'
+api 'com.github.SimonIT.gdx-AppWarp:java:master-SNAPSHOT:all'
 ```
 
 
 android:
 Android contains already the json dependency, so we exclude it
 ```groovy
-api('com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT:all') {
+api('com.github.SimonIT.gdx-AppWarp:java:master-SNAPSHOT:all') {
     exclude group: 'org.json', module: 'json'
 }
 ```
@@ -27,19 +26,19 @@ api('com.github.SimonIT.App42MultiPlayerGamingSDK:java:master-SNAPSHOT:all') {
 html:
 GWT needs also th sources to compile
 ```groovy
-api 'com.github.SimonIT.App42MultiPlayerGamingSDK:core:master-SNAPSHOT:sources'
-api 'com.github.SimonIT.App42MultiPlayerGamingSDK:gwt:master-SNAPSHOT'
-api 'com.github.SimonIT.App42MultiPlayerGamingSDK:gwt:master-SNAPSHOT:sources'
+api 'com.github.SimonIT.gdx-AppWarp:core:master-SNAPSHOT:sources'
+api 'com.github.SimonIT.gdx-AppWarp:gwt:master-SNAPSHOT'
+api 'com.github.SimonIT.gdx-AppWarp:gwt:master-SNAPSHOT:sources'
 ```
 and add
 
 ```xml
-<inherits name='de.SimonIT.App42MultiPlayerGamingGwtSDK'/>
+<inherits name='de.SimonIT.gdxAppWarp'/>
 ```
 to your _GdxDefinition.gwt.xml_.
 
 core:
 Core needs only the interface
 ```groovy
-api 'com.github.SimonIT.App42MultiPlayerGamingSDK:core:master-SNAPSHOT'
+api 'com.github.SimonIT.gdx-AppWarp:core:master-SNAPSHOT'
 ```

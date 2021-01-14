@@ -1,4 +1,4 @@
-rootProject.name = 'App42MultiPlayerGamingSDK'
+rootProject.name = 'gdx-AppWarp'
 include 'core'
 include 'gwt'
 include 'java'

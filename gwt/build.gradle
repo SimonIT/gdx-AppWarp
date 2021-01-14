@@ -1,12 +1,12 @@
 plugins {
     id "org.wisepersist.gwt" version "1.1.10"
 }
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: "maven"
 apply plugin: 'org.wisepersist.gwt'
 
 
-group 'de.SimonIT.App42MultiPlayerGamingSDK'
+group 'de.SimonIT.gdxAppWarp'
 sourceCompatibility = '1.8'
 version '2.1'
 

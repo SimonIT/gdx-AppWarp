@@ -2,7 +2,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
-apply plugin: "java"
+apply plugin: "java-library"
 apply plugin: "maven"
 
 configurations {
@@ -10,7 +10,7 @@ configurations {
     compile.extendsFrom provided
 }
 
-group 'de.SimonIT.App42MultiPlayerGamingSDK'
+group 'de.SimonIT.gdxAppWarp'
 sourceCompatibility = '1.8'
 version '2.3'
 
