@@ -1,13 +1,13 @@
 package de.SimonIT.gdxAppWarp.events;
 
-import org.jetbrains.annotations.Nullable;
+import com.badlogic.gdx.utils.Null;
 
 public class RoomEvent {
-	@Nullable
+	@Null
 	private RoomData info;
 	private byte result;
 
-	public RoomEvent(@Nullable RoomData info, byte result) {
+	public RoomEvent(@Null RoomData info, byte result) {
 		this.info = info;
 		this.result = result;
 	}

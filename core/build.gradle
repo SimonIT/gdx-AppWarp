@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.jetbrains:annotations:20.1.0'
+    api 'com.badlogicgames.gdx:gdx:1.9.11'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
