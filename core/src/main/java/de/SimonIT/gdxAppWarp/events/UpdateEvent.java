@@ -1,8 +1,8 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class UpdateEvent {
-	private byte[] update;
-	private boolean isUnReliableUDP;
+	private final byte[] update;
+	private final boolean isUnReliableUDP;
 
 	public UpdateEvent(byte[] update, boolean udp) {
 		this.update = update;

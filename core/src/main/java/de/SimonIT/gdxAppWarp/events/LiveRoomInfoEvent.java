@@ -3,8 +3,8 @@ package de.SimonIT.gdxAppWarp.events;
 import java.util.Map;
 
 public class LiveRoomInfoEvent extends RoomEvent {
-	private String[] joinedUsers;
-	private String customData;
+	private final String[] joinedUsers;
+	private final String customData;
 	private Map<String, Object> properties;
 	private Map<String, String> lockProperties;
 

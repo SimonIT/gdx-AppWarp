@@ -1,10 +1,10 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class RoomData {
-	private String roomId;
-	private String owner;
-	private int maxUsers;
-	private String name;
+	private final String roomId;
+	private final String owner;
+	private final int maxUsers;
+	private final String name;
 
 	public RoomData(String id, String owner, String name, int max) {
 		this.roomId = id;

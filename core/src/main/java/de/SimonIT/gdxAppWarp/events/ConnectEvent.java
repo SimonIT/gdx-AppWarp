@@ -1,8 +1,8 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class ConnectEvent {
-	private byte result;
-	private int reasonCode;
+	private final byte result;
+	private final int reasonCode;
 
 	public ConnectEvent(byte result) {
 		this.result = result;

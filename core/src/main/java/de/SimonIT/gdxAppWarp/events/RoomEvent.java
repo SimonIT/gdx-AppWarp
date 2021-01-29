@@ -4,8 +4,8 @@ import com.badlogic.gdx.utils.Null;
 
 public class RoomEvent {
 	@Null
-	private RoomData info;
-	private byte result;
+	private final RoomData info;
+	private final byte result;
 
 	public RoomEvent(@Null RoomData info, byte result) {
 		this.info = info;

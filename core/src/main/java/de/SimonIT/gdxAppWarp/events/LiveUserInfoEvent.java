@@ -1,9 +1,9 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class LiveUserInfoEvent {
-	private byte result;
+	private final byte result;
 	private String locationId;
-	private String name;
+	private final String name;
 	private String customData;
 	private boolean isLocationLobby;
 	private boolean isPaused;

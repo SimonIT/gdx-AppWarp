@@ -1,8 +1,8 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class MatchedRoomsEvent {
-	private byte result;
-	private RoomData[] roomData;
+	private final byte result;
+	private final RoomData[] roomData;
 
 	public MatchedRoomsEvent(byte result, RoomData[] roomData) {
 		this.roomData = roomData;

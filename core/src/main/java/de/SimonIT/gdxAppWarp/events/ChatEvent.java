@@ -1,10 +1,10 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class ChatEvent {
-	private String chat;
-	private String sender;
-	private String locId;
-	private boolean isLocationLobby;
+	private final String chat;
+	private final String sender;
+	private final String locId;
+	private final boolean isLocationLobby;
 	private long time;
 
 	public ChatEvent(String chat, String sender, String id, boolean fromLobby) {

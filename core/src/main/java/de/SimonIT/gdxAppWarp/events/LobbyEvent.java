@@ -1,8 +1,8 @@
 package de.SimonIT.gdxAppWarp.events;
 
 public class LobbyEvent {
-	private LobbyData info;
-	private byte result;
+	private final LobbyData info;
+	private final byte result;
 
 	public LobbyEvent(LobbyData info, byte result) {
 		this.info = info;
