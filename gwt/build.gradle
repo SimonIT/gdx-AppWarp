@@ -2,15 +2,13 @@ plugins {
     id "org.wisepersist.gwt" version "1.1.19"
 }
 apply plugin: 'java-library'
-apply plugin: "maven"
+apply plugin: "maven-publish"
 apply plugin: 'org.wisepersist.gwt'
 
 
 group 'de.SimonIT.gdxAppWarp'
 sourceCompatibility = '1.8'
 version '2.1'
-
-javadoc.options.addStringOption("sourcepath", "")
 
 repositories {
     mavenCentral()
@@ -24,17 +22,15 @@ gwt {
     gwtVersion = "2.8.2"
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier.set("sources")
-    from sourceSets.main.allSource
+java {
+	withJavadocJar()
+	withSourcesJar()
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier.set("javadoc")
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
 }
