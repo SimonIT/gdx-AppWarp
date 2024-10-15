@@ -22,7 +22,7 @@ dependencies {
     implementation project(":core")
     shadow files("lib/App42MultiPlayerGamingSDK.jar")
     compile group: 'org.json', name: 'json', version: '20240303'
-    compileOnly 'org.jetbrains:annotations:26.0.0'
+    compileOnly 'org.jetbrains:annotations:26.0.1'
 }
 
 shadowJar {
